@@ -1,0 +1,19 @@
+olidstransforms:
+# test comment to check whether the repo is initiated properly as a git repo
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: bodjzxh-oh51336
+ 
+      # User/password auth
+      user: garthjones
+      password: Iloveeatingapples$1
+ 
+      role: ACCOUNTADMIN
+      database: OMOP_SNOWFLAKE
+      warehouse: COMPUTE_WH
+      schema: OLIDS
+      threads: 1
+      client_session_keep_alive: False
+      query_tag: anything
