@@ -1,0 +1,572 @@
+version: 2
+
+sources:
+  - name: olids_masked
+    database: &olids_db "{{ var('olids_database') }}"
+    schema: OLIDS_MASKED
+    tables:
+      - name: PATIENT
+
+  - name: olids_common
+    database: *olids_db
+    schema: OLIDS_COMMON
+    tables:
+      - name: ORGANISATION
+        columns:
+          - name: LDS_RECORD_ID
+            data_type: Varchar
+          - name: ID
+            data_type: Varchar
+          - name: ORGANISATION_CODE
+            data_type: Varchar
+          - name: ASSIGNING_AUTHORITY_CODE
+            data_type: Varchar
+          - name: NAME
+            data_type: Varchar
+          - name: TYPE_CODE
+            data_type: Varchar
+          - name: TYPE_DESC
+            data_type: Varchar
+          - name: POSTCODE
+            data_type: Varchar
+          - name: PARENT_ORGANISATION_ID
+            data_type: Varchar
+          - name: OPEN_DATE
+            data_type: Date
+          - name: CLOSE_DATE
+            data_type: Date
+          - name: IS_OBSOLETE
+            data_type: Boolean
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: LDS_CDM_EVENT_ID
+            data_type: Varchar
+          - name: LDS_VERSIONER_EVENT_ID
+            data_type: Varchar
+          - name: RECORD_OWNER_ORGANISATION_CODE
+            data_type: Varchar
+          - name: LDS_DATETIME_DATA_ACQUIRED
+            data_type: Timestamp_NTZ
+          - name: LDS_INITIAL_DATA_RECEIVED_DATE
+            data_type: Timestamp_NTZ
+          - name: LDS_IS_DELETED
+            data_type: Boolean
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_LAKEHOUSE_DATE_PROCESSED
+            data_type: Date
+          - name: LDS_LAKEHOUSE_DATETIME_UPDATED
+            data_type: Timestamp_NTZ
+      - name: PRACTITIONER
+        columns:
+          - name: LDS_RECORD_ID
+            data_type: Varchar
+          - name: ID
+            data_type: Varchar
+          - name: GMC_CODE
+            data_type: Varchar
+          - name: TITLE
+            data_type: Varchar
+          - name: FIRST_NAME
+            data_type: Varchar
+          - name: LAST_NAME
+            data_type: Varchar
+          - name: NAME
+            data_type: Varchar
+          - name: IS_OBSOLETE
+            data_type: Boolean
+          - name: LDS_END_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: LDS_CDM_EVENT_ID
+            data_type: Varchar
+          - name: LDS_VERSIONER_EVENT_ID
+            data_type: Varchar
+          - name: RECORD_OWNER_ORGANISATION_CODE
+            data_type: Varchar
+          - name: LDS_DATETIME_DATA_ACQUIRED
+            data_type: Timestamp_NTZ
+          - name: LDS_INITIAL_DATA_RECEIVED_DATE
+            data_type: Timestamp_NTZ
+          - name: LDS_IS_DELETED
+            data_type: Boolean
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_LAKEHOUSE_DATE_PROCESSED
+            data_type: Date
+          - name: LDS_LAKEHOUSE_DATETIME_UPDATED
+            data_type: Timestamp_NTZ
+      - name: PROCEDURE_REQUEST
+        columns:
+          - name: LDS_RECORD_ID
+            data_type: Varchar
+          - name: ID
+            data_type: Varchar
+          - name: PERSON_ID
+            data_type: Varchar
+          - name: PATIENT_ID
+            data_type: Varchar
+          - name: ENCOUNTER_ID
+            data_type: Varchar
+          - name: PRACTITIONER_ID
+            data_type: Varchar
+          - name: CLINICAL_EFFECTIVE_DATE
+            data_type: Timestamp_NTZ
+          - name: DATE_PRECISION_CONCEPT_ID
+            data_type: Varchar
+          - name: DATE_RECORDED
+            data_type: Timestamp_NTZ
+          - name: DESCRIPTION
+            data_type: Varchar
+          - name: PROCEDURE_REQUEST_SOURCE_CONCEPT_ID
+            data_type: Varchar
+          - name: STATUS_CONCEPT_ID
+            data_type: Varchar
+          - name: AGE_AT_EVENT
+            data_type: Number
+          - name: AGE_AT_EVENT_BABY
+            data_type: Number
+          - name: AGE_AT_EVENT_NEONATE
+            data_type: Number
+          - name: IS_CONFIDENTIAL
+            data_type: Boolean
+          - name: LDS_END_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: LDS_CDM_EVENT_ID
+            data_type: Varchar
+          - name: LDS_VERSIONER_EVENT_ID
+            data_type: Varchar
+          - name: RECORD_OWNER_ORGANISATION_CODE
+            data_type: Varchar
+          - name: LDS_DATETIME_DATA_ACQUIRED
+            data_type: Timestamp_NTZ
+          - name: LDS_INITIAL_DATA_RECEIVED_DATE
+            data_type: Timestamp_NTZ
+          - name: LDS_IS_DELETED
+            data_type: Boolean
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_LAKEHOUSE_DATE_PROCESSED
+            data_type: Date
+          - name: LDS_LAKEHOUSE_DATETIME_UPDATED
+            data_type: Timestamp_NTZ
+      - name: OBSERVATION
+        columns:
+          - name: LDS_RECORD_ID
+            data_type: Varchar
+          - name: ID
+            data_type: Varchar
+          - name: PATIENT_ID
+            data_type: Varchar
+          - name: PERSON_ID
+            data_type: Varchar
+          - name: ENCOUNTER_ID
+            data_type: Varchar
+          - name: PRACTITIONER_ID
+            data_type: Varchar
+          - name: PARENT_OBSERVATION_ID
+            data_type: Varchar
+          - name: CLINICAL_EFFECTIVE_DATE
+            data_type: Timestamp_NTZ
+          - name: DATE_PRECISION_CONCEPT_ID
+            data_type: Varchar
+          - name: RESULT_VALUE
+            data_type: Float
+          - name: RESULT_VALUE_UNITS_CONCEPT_ID
+            data_type: Varchar
+          - name: RESULT_DATE
+            data_type: Timestamp_NTZ
+          - name: RESULT_TEXT
+            data_type: Varchar
+          - name: IS_PROBLEM
+            data_type: Boolean
+          - name: IS_REVIEW
+            data_type: Boolean
+          - name: PROBLEM_END_DATE
+            data_type: Timestamp_NTZ
+          - name: OBSERVATION_SOURCE_CONCEPT_ID
+            data_type: Varchar
+          - name: AGE_AT_EVENT
+            data_type: Number
+          - name: AGE_AT_EVENT_BABY
+            data_type: Number
+          - name: AGE_AT_EVENT_NEONATE
+            data_type: Number
+          - name: EPISODICITY_CONCEPT_ID
+            data_type: Varchar
+          - name: IS_PRIMARY
+            data_type: Boolean
+          - name: DATE_RECORDED
+            data_type: Timestamp_NTZ
+          - name: IS_PROBLEM_DELETED
+            data_type: Boolean
+          - name: IS_CONFIDENTIAL
+            data_type: Boolean
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: LDS_CDM_EVENT_ID
+            data_type: Varchar
+          - name: LDS_VERSIONER_EVENT_ID
+            data_type: Varchar
+          - name: RECORD_OWNER_ORGANISATION_CODE
+            data_type: Varchar
+          - name: LDS_DATETIME_DATA_ACQUIRED
+            data_type: Timestamp_NTZ
+          - name: LDS_INITIAL_DATA_RECEIVED_DATE
+            data_type: Timestamp_NTZ
+          - name: LDS_IS_DELETED
+            data_type: Boolean
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_LAKEHOUSE_DATE_PROCESSED
+            data_type: Date
+          - name: LDS_LAKEHOUSE_DATETIME_UPDATED
+            data_type: Timestamp_NTZ
+      - name: MEDICATION_ORDER
+        columns:
+          - name: LDS_RECORD_ID
+            data_type: Varchar
+          - name: ID
+            data_type: Varchar
+          - name: ORGANISATION_ID
+            data_type: Varchar
+          - name: PERSON_ID
+            data_type: Varchar
+          - name: PATIENT_ID
+            data_type: Varchar
+          - name: MEDICATION_STATEMENT_ID
+            data_type: Varchar
+          - name: ENCOUNTER_ID
+            data_type: Varchar
+          - name: PRACTITIONER_ID
+            data_type: Varchar
+          - name: OBSERVATION_ID
+            data_type: Varchar
+          - name: ALLERGY_INTOLERANCE_ID
+            data_type: Varchar
+          - name: DIAGNOSTIC_ORDER_ID
+            data_type: Varchar
+          - name: REFERRAL_REQUEST_ID
+            data_type: Varchar
+          - name: CLINICAL_EFFECTIVE_DATE
+            data_type: Timestamp_NTZ
+          - name: DATE_PRECISION_CONCEPT_ID
+            data_type: Varchar
+          - name: DOSE
+            data_type: Varchar
+          - name: QUANTITY_VALUE
+            data_type: Float
+          - name: QUANTITY_UNIT
+            data_type: Varchar
+          - name: DURATION_DAYS
+            data_type: Number
+          - name: ESTIMATED_COST
+            data_type: Float
+          - name: MEDICATION_NAME
+            data_type: Varchar
+          - name: MEDICATION_ORDER_SOURCE_CONCEPT_ID
+            data_type: Varchar
+          - name: BNF_REFERENCE
+            data_type: Varchar
+          - name: AGE_AT_EVENT
+            data_type: Number
+          - name: AGE_AT_EVENT_BABY
+            data_type: Number
+          - name: AGE_AT_EVENT_NEONATE
+            data_type: Number
+          - name: ISSUE_METHOD
+            data_type: Varchar
+          - name: DATE_RECORDED
+            data_type: Timestamp_NTZ
+          - name: IS_CONFIDENTIAL
+            data_type: Boolean
+          - name: ISSUE_METHOD_DESCRIPTION
+            data_type: Varchar
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: LDS_CDM_EVENT_ID
+            data_type: Varchar
+          - name: LDS_VERSIONER_EVENT_ID
+            data_type: Varchar
+          - name: RECORD_OWNER_ORGANISATION_CODE
+            data_type: Varchar
+          - name: LDS_DATETIME_DATA_ACQUIRED
+            data_type: Timestamp_NTZ
+          - name: LDS_INITIAL_DATA_RECEIVED_DATE
+            data_type: Timestamp_NTZ
+          - name: LDS_IS_DELETED
+            data_type: Boolean
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_LAKEHOUSE_DATE_PROCESSED
+            data_type: Date
+          - name: LDS_LAKEHOUSE_DATETIME_UPDATED
+            data_type: Timestamp_NTZ
+      - name: ALLERGY_INTOLERANCE
+        columns:
+          - name: LDS_RECORD_ID
+            data_type: Varchar
+          - name: ID
+            data_type: Varchar
+          - name: PATIENT_ID
+            data_type: Varchar
+          - name: PRACTITIONER_ID
+            data_type: Varchar
+          - name: ENCOUNTER_ID
+            data_type: Varchar
+          - name: CLINICAL_STATUS
+            data_type: Varchar
+          - name: VERIFICATION_STATUS
+            data_type: Varchar
+          - name: CATEGORY
+            data_type: Varchar
+          - name: CLINICAL_EFFECTIVE_DATE
+            data_type: Timestamp_NTZ
+          - name: DATE_PRECISION_CONCEPT_ID
+            data_type: Varchar
+          - name: IS_REVIEW
+            data_type: Boolean
+          - name: MEDICATION_NAME
+            data_type: Varchar
+          - name: MULTI_LEX_ACTION
+            data_type: Varchar
+          - name: ALLERGY_INTOLERANCE_SOURCE_CONCEPT_ID
+            data_type: Varchar
+          - name: AGE_AT_EVENT
+            data_type: Number
+          - name: AGE_AT_EVENT_BABY
+            data_type: Number
+          - name: AGE_AT_EVENT_NEONATE
+            data_type: Number
+          - name: DATE_RECORDED
+            data_type: Timestamp_NTZ
+          - name: IS_CONFIDENTIAL
+            data_type: Boolean
+          - name: PERSON_ID
+            data_type: Varchar
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: LDS_CDM_EVENT_ID
+            data_type: Varchar
+          - name: LDS_VERSIONER_EVENT_ID
+            data_type: Varchar
+          - name: RECORD_OWNER_ORGANISATION_CODE
+            data_type: Varchar
+          - name: LDS_DATETIME_DATA_ACQUIRED
+            data_type: Timestamp_NTZ
+          - name: LDS_INITIAL_DATA_RECEIVED_DATE
+            data_type: Timestamp_NTZ
+          - name: LDS_IS_DELETED
+            data_type: Boolean
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_LAKEHOUSE_DATE_PROCESSED
+            data_type: Date
+          - name: LDS_LAKEHOUSE_DATETIME_UPDATED
+            data_type: Timestamp_NTZ
+      - name: ENCOUNTER
+        columns:
+          - name: LDS_RECORD_ID
+            data_type: Varchar
+          - name: ID
+            data_type: Varchar
+          - name: PERSON_ID
+            data_type: Varchar
+          - name: PATIENT_ID
+            data_type: Varchar
+          - name: PRACTITIONER_ID
+            data_type: Varchar
+          - name: APPOINTMENT_ID
+            data_type: Varchar
+          - name: EPISODE_OF_CARE_ID
+            data_type: Varchar
+          - name: SERVICE_PROVIDER_ORGANISATION_ID
+            data_type: Varchar
+          - name: CLINICAL_EFFECTIVE_DATE
+            data_type: Timestamp_NTZ
+          - name: DATE_PRECISION_CONCEPT_ID
+            data_type: Varchar
+          - name: LOCATION
+            data_type: Varchar
+          - name: ENCOUNTER_SOURCE_CONCEPT_ID
+            data_type: Varchar
+          - name: AGE_AT_EVENT
+            data_type: Number
+          - name: AGE_AT_EVENT_BABY
+            data_type: Number
+          - name: AGE_AT_EVENT_NEONATE
+            data_type: Number
+          - name: TYPE
+            data_type: Varchar
+          - name: SUB_TYPE
+            data_type: Varchar
+          - name: ADMISSION_METHOD
+            data_type: Varchar
+          - name: END_DATE
+            data_type: Timestamp_NTZ
+          - name: DATE_RECORDED
+            data_type: Timestamp_NTZ
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: LDS_CDM_EVENT_ID
+            data_type: Varchar
+          - name: LDS_VERSIONER_EVENT_ID
+            data_type: Varchar
+          - name: RECORD_OWNER_ORGANISATION_CODE
+            data_type: Varchar
+          - name: LDS_DATETIME_DATA_ACQUIRED
+            data_type: Timestamp_NTZ
+          - name: LDS_INITIAL_DATA_RECEIVED_DATE
+            data_type: Timestamp_NTZ
+          - name: LDS_IS_DELETED
+            data_type: Boolean
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_LAKEHOUSE_DATE_PROCESSED
+            data_type: Date
+          - name: LDS_LAKEHOUSE_DATETIME_UPDATED
+            data_type: Timestamp_NTZ
+      - name: PATIENT_REGISTERED_PRACTITIONER_IN_ROLE
+        columns:
+          - name: LDS_RECORD_ID
+            data_type: Varchar
+          - name: ID
+            data_type: Varchar
+          - name: PERSON_ID
+            data_type: Varchar
+          - name: PATIENT_ID
+            data_type: Varchar
+          - name: ORGANISATION_ID
+            data_type: Varchar
+          - name: PRACTITIONER_ID
+            data_type: Varchar
+          - name: EPISODE_OF_CARE_ID
+            data_type: Varchar
+          - name: START_DATE
+            data_type: Timestamp_NTZ
+          - name: END_DATE
+            data_type: Timestamp_NTZ
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: LDS_CDM_EVENT_ID
+            data_type: Varchar
+          - name: LDS_VERSIONER_EVENT_ID
+            data_type: Varchar
+          - name: RECORD_OWNER_ORGANISATION_CODE
+            data_type: Varchar
+          - name: LDS_DATETIME_DATA_ACQUIRED
+            data_type: Timestamp_NTZ
+          - name: LDS_INITIAL_DATA_RECEIVED_DATE
+            data_type: Timestamp_NTZ
+          - name: LDS_IS_DELETED
+            data_type: Boolean
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
+          - name: LDS_LAKEHOUSE_DATE_PROCESSED
+            data_type: Date
+          - name: LDS_LAKEHOUSE_DATETIME_UPDATED
+            data_type: Timestamp_NTZ
+
+  - name: olids_terminology
+    database: *olids_db
+    schema: OLIDS_TERMINOLOGY
+    tables:
+      - name: CONCEPT
+        columns:
+          - name: ID
+            data_type: Varchar
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: SYSTEM
+            data_type: Varchar
+          - name: CODE
+            data_type: Varchar
+          - name: DISPLAY
+            data_type: Varchar
+          - name: IS_MAPPED
+            data_type: Boolean
+          - name: USE_COUNT
+            data_type: Number
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
+      - name: CONCEPT_MAP
+        columns:
+          - name: ID
+            data_type: Varchar
+          - name: LDS_ID
+            data_type: Varchar
+          - name: LDS_BUSINESS_KEY
+            data_type: Varchar
+          - name: LDS_DATASET_ID
+            data_type: Varchar
+          - name: CONCEPT_MAP_ID
+            data_type: Varchar
+          - name: CONCEPT_MAP_RESOURCE_ID
+            data_type: Varchar
+          - name: CONCEPT_MAP_URL
+            data_type: Varchar
+          - name: CONCEPT_MAP_VERSION
+            data_type: Varchar
+          - name: SOURCE_CODE_ID
+            data_type: Varchar
+          - name: SOURCE_SYSTEM
+            data_type: Varchar
+          - name: SOURCE_CODE
+            data_type: Varchar
+          - name: SOURCE_DISPLAY
+            data_type: Varchar
+          - name: TARGET_CODE_ID
+            data_type: Varchar
+          - name: TARGET_SYSTEM
+            data_type: Varchar
+          - name: TARGET_CODE
+            data_type: Varchar
+          - name: TARGET_DISPLAY
+            data_type: Varchar
+          - name: IS_PRIMARY
+            data_type: Boolean
+          - name: IS_ACTIVE
+            data_type: Boolean
+          - name: EQUIVALENCE
+            data_type: Varchar
+          - name: LDS_START_DATE_TIME
+            data_type: Timestamp_NTZ
