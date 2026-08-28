@@ -30,7 +30,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
+  +transient: false        #no time travel, can be set for specific models https://docs.getdbt.com/reference/resource-configs/snowflake-configs
   olidstransforms:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    cdm: 
+      +database: "OMOP_SNOWFLAKE"
+      location:
+        +schema: "CDM"
+
+
